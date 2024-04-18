@@ -19,6 +19,7 @@ export default{
     <div class="container">
         <div  class="wrapper-list">
         <Card  v-for="singleCard in store.MovieList" :key="singleCard.id" :MovieInfo="singleCard"  ></Card>
+        <Card  v-for="singleCard in store.SerieTvList" :key="singleCard.id" :SerieInfo="singleCard"  ></Card>
     </div>
     </div>
  </section>

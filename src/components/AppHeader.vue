@@ -27,6 +27,7 @@ header{
     padding: 15px;
     font-size: 20px;
     background-color: black;
+    border-bottom: 1px solid grey;
    .wrapper-header{
     width: 90%;
     margin: 0 auto;

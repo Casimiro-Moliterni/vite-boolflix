@@ -41,7 +41,7 @@ export default {
           params:queryParams
           })
        .then((response)=>{
-          store.MovieList = response.data.results; 
+          store.SerieTvList = response.data.results; 
           console.log(response.data.results)
           })
     },
