@@ -13,9 +13,9 @@ export default{
     },
     methods:{
         getImageUrl(name) {
-                return new URL(`./https://image.tmdb.org/t/p/w342${name}`, import.meta.url).href;
+                return `https://image.tmdb.org/t/p/w342${name}`;
             }
-    }
+    },
 }
 </script>
 
@@ -54,12 +54,12 @@ export default{
         width: calc((100% / 5 ) - 10px);
         margin: 5px;
         .image.flag{
-            width: 30%;
+            width: 10%;
             margin: 0 auto;
            img{
             object-fit: cover;
             width: 100%;
-            height: 50px;
+            height: 20px;
            }
         }
         .image-poster{
