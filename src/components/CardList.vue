@@ -34,6 +34,6 @@ export default{
 section{
     padding-top:20px ;
     background-color:#1B1B1B;
-    height: 100vh;
+    
 }
 </style>
