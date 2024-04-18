@@ -12,37 +12,49 @@ export default {
   },
   data(){
     return{
-      store
+      store,
+      ApiUrlMovie :'https://api.themoviedb.org/3/search/movie',
+      ApiUrlSerie :'https://api.themoviedb.org/3/search/tv',
     }
   },
   methods:{
-    getCharactersFromApi(){
-      
+    getMovieFromApi(){
+  
       const queryParams ={
-
+      language:'it-IT',
+      api_key:'8553ca13f1428eb8af642e1115ad4dc1',
       };
 
       if(store.searchText !== ''){
         queryParams.query = store.searchText
       }
-      // axios api 
-       axios.get('https://api.themoviedb.org/3/search/movie?api_key=8553ca13f1428eb8af642e1115ad4dc1',{
-        params:queryParams
-       })
+      // axios api movie
+       axios.get(this.ApiUrlMovie ,{
+          params:queryParams
+        })
        .then((response)=>{
-        store.MovieList = response.data.results;
-        console.log(store.MovieList)
-       })
-    }
+           store.MovieList = response.data.results; 
+           console.log(response.data.results)
+        })
+      //  axios serie 
+       axios.get(this.ApiUrlSerie,{
+          params:queryParams
+          })
+       .then((response)=>{
+          store.MovieList = response.data.results; 
+          console.log(response.data.results)
+          })
+    },
+  
   },
   mounted(){
-    this.getCharactersFromApi()
+    this.getMovieFromApi()
   }
 }
 </script>
 
 <template>
- <AppHeader @searchPerfomed="getCharactersFromApi()"></AppHeader>
+ <AppHeader @searchPerfomedMovie="getMovieFromApi()"></AppHeader>
  <main>
   <CardList></CardList>
 </main>

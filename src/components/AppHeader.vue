@@ -12,24 +12,27 @@ export default {
 
 <template>
     <header>
-        <h1>BOOLFIZ</h1>
-        <nav>
-        <input type="text" v-model="store.searchText"  >
-        <button @click="$emit('searchPerfomed')">cerca</button>
-    </nav>
+        <div class="wrapper-header">
+           <h1>BOOLFIZ</h1>
+          <nav>
+            <input type="text" v-model="store.searchText"  >
+            <button @click="$emit('searchPerfomedMovie')">cerca</button>
+          </nav>
+        </div>
     </header>
 </template>
 
 <style scoped lang="scss">
 header{
-    margin: 0 auto;
     padding: 15px;
-    width: 90%;
     font-size: 20px;
+    background-color: black;
+   .wrapper-header{
+    width: 90%;
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
-
     h1{
         color: red;
     }
@@ -40,9 +43,12 @@ header{
         gap: 10px;
         input,button{
             padding: 10px;
-            border-radius: 10px;
+            border-radius: 5px;
             font-size: inherit;
+            border: none;
+            cursor: pointer;
         }
     }
+   }
 }
 </style>

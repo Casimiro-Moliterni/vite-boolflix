@@ -18,7 +18,7 @@ export default{
  <section>
     <div class="container">
         <div  class="wrapper-list">
-        <Card v-for="singleCard in store.MovieList" :key="singleCard.id" :MovieInfo="singleCard"></Card>
+        <Card  v-for="singleCard in store.MovieList" :key="singleCard.id" :MovieInfo="singleCard"  ></Card>
     </div>
     </div>
  </section>
@@ -29,5 +29,10 @@ export default{
     display: flex;
     flex-wrap:wrap ;
     justify-content: space-between;
+}
+section{
+    padding-top:20px ;
+    background-color:#1B1B1B;
+    height: 100vh;
 }
 </style>
