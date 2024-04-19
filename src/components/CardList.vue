@@ -29,7 +29,7 @@ export default{
           <h1 v-show="store.SerieTvList.length > 0">SERIE TV</h1>  
         </div>
         <div class="wrapper-list">
-          <Card  v-for="singleCard in store.SerieTvList" :key="singleCard.id" :SerieInfo="singleCard"  ></Card>
+          <Card  v-for="singleCard in store.SerieTvList" :key="singleCard.id" :MovieInfo="singleCard"  ></Card>
        </div>
     </div>
  </section>
@@ -50,7 +50,10 @@ section{
     .wrapper-title{
         display: flex;
         justify-content: center;
+        
         h1{
+            box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
          text-align: center;
         margin: 0 0 30px 10px;
         font-size: 30px;
