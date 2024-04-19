@@ -14,6 +14,12 @@ export default{
     methods:{
         getImageUrl(name) {
                 return `https://image.tmdb.org/t/p/w342${name}`;
+            },
+            fixNumber(number){
+                if(number > 0){
+                    number= number/2;
+                }
+                return number.toFixed();
             }
     },
 }
@@ -21,7 +27,6 @@ export default{
 
 <template>
    <div class="single-card" v-if="MovieInfo" >
-     <h2>Film</h2>
     <div class="image-poster"><img :src="getImageUrl(MovieInfo.poster_path)" alt=""></div>
      <h3 class="p-b">Titolo: {{ MovieInfo.title}}</h3>
      <h3 class="p-b">Titolo Orginale: {{ MovieInfo.original_title }}</h3>
@@ -29,10 +34,9 @@ export default{
      <div class="p-b image flag" v-else-if="MovieInfo.original_language == 'fr'" ><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Flag_of_France.svg/1200px-Flag_of_France.svg.png" alt=""></div>
      <div class="p-b image flag" v-else-if="MovieInfo.original_language == 'it'" ><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQMAAADCCAMAAAB6zFdcAAAAKlBMVEX///8AkkbOKzfG4NAAizbwy83LECMkmlXRP0jOKTYAlEjJ4tPxztDLDSGog9TvAAABDUlEQVR4nO3Qhw2AQAwEsBDKU/dflylOCMkewTUSzqsS7t4TakpY5sjB+hwB/a+DrRMcOHDgwIEDBw4cOHDgwIEDBw4cOHDgwIEDBw4cOHDgwIEDBw4cOHDgwIEDBw4cOHDgwIEDBw4cOHDgwIEDBw4cOHDgwIEDBw4cOHDgwIEDBw4cOHDgwIEDBw4cOHDgwIEDBw4cOHDgwIEDBw4cOHDgwIEDBw4cOHDgwIEDBw4cOHDgwIEDBw4cOHDgwIEDBw4cOHDgwIEDBw4cOHDgwIEDBw4cOHDgwIEDBw4cOHDgwIEDBw4cOHDgwIEDBw4cOHDgwIEDBw4cOHDgwIEDBw4cOHDgwIEDBw6+PHgBNBXVQ0m/YKMAAAAASUVORK5CYII=" alt=""></div>
      <h4 class="p-b" v-else>Lingua:{{ MovieInfo.original_language }}</h4>
-     <h4 class="p-b">Voto: {{ MovieInfo.vote_average }}</h4>
+     <h4 class="p-b">Voto: {{ fixNumber(MovieInfo.vote_average)  }}</h4>
    </div>
    <div class="single-card" v-else>
-    <h2>Serie</h2>
     <div class="image-poster"><img :src="getImageUrl(SerieInfo.poster_path)" alt=""></div>
      <h3  class="p-b">Titolo: {{ SerieInfo.name}}</h3>
      <h3 class="p-b">Titolo Orginale: {{ SerieInfo.original_name }}</h3>
@@ -40,7 +44,7 @@ export default{
      <div class="p-b image flag" v-else-if="SerieInfo.original_language == 'fr'" ><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Flag_of_France.svg/1200px-Flag_of_France.svg.png" alt=""></div>
      <div class="p-b image flag" v-else-if="SerieInfo.original_language == 'it'" ><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQMAAADCCAMAAAB6zFdcAAAAKlBMVEX///8AkkbOKzfG4NAAizbwy83LECMkmlXRP0jOKTYAlEjJ4tPxztDLDSGog9TvAAABDUlEQVR4nO3Qhw2AQAwEsBDKU/dflylOCMkewTUSzqsS7t4TakpY5sjB+hwB/a+DrRMcOHDgwIEDBw4cOHDgwIEDBw4cOHDgwIEDBw4cOHDgwIEDBw4cOHDgwIEDBw4cOHDgwIEDBw4cOHDgwIEDBw4cOHDgwIEDBw4cOHDgwIEDBw4cOHDgwIEDBw4cOHDgwIEDBw4cOHDgwIEDBw4cOHDgwIEDBw4cOHDgwIEDBw4cOHDgwIEDBw4cOHDgwIEDBw4cOHDgwIEDBw4cOHDgwIEDBw4cOHDgwIEDBw4cOHDgwIEDBw4cOHDgwIEDBw4cOHDgwIEDBw4cOHDgwIEDBw4cOHDgwIEDBw6+PHgBNBXVQ0m/YKMAAAAASUVORK5CYII=" alt=""></div>
      <h4 class="p-b" v-else>Lingua:{{ SerieInfo.original_language }}</h4>
-     <h4 class="p-b">Voto: {{ SerieInfo.vote_average }}</h4>
+     <h4 class="p-b">Voto: {{  fixNumber(SerieInfo.vote_average) }}</h4>
    </div>
 </template>
 
@@ -48,9 +52,10 @@ export default{
     .single-card{
         color: white;
         position: relative;
-        background-color:lightgray;
+        background-color:rgb(69, 66, 66);
         text-align: center;
-        border: 1px solid black;
+        border: 3px solid black;
+        border-radius: 10px;
         width: calc((100% / 5 ) - 10px);
         margin: 5px;
         .image.flag{
@@ -63,12 +68,7 @@ export default{
            }
         }
         .image-poster{
-           position: absolute;
-           top: 0;
-           left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
+          
            img{
            
             object-fit: cover;
@@ -77,8 +77,7 @@ export default{
            }
         }
         h2,h3,h4{
-            position: relative;
-            z-index: 1;
+           
         }
     }
     .p-b{
