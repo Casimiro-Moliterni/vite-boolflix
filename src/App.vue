@@ -44,8 +44,20 @@ export default {
           store.SerieTvList = response.data.results; 
           console.log(response.data.results)
           })
-    },
+    }
   
+  },
+  mounted(){
+    axios.get('https://api.themoviedb.org/3/movie/popular?api_key=8553ca13f1428eb8af642e1115ad4dc1&language=its-US&page=1')
+    .then((response)=>{
+           store.MovieList = response.data.results; 
+           console.log(response.data.results)
+        }),
+        axios.get('https://api.themoviedb.org/3/tv/popular?api_key=8553ca13f1428eb8af642e1115ad4dc1&language=its-US&page=1')
+    .then((response)=>{
+           store.SerieTvList = response.data.results; 
+           console.log(response.data.results)
+        })
   }
 }
 </script>

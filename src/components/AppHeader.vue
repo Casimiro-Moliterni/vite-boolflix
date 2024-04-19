@@ -6,6 +6,8 @@ export default {
         return{
             store
         }
+    },
+    methods:{
     }
 }
 </script>
@@ -15,8 +17,8 @@ export default {
         <div class="wrapper-header">
            <h1>BOOLFIZ</h1>
           <nav>
-            <input type="text" v-model="store.searchText"  >
-            <button @click="$emit('searchPerfomedMovie')">cerca</button>
+            <input type="text" v-model="store.searchText" @keyup.enter="$emit('searchPerfomedMovie')"  @change="$emit('searchPerfomedMovie')">
+            <button     @click="$emit('searchPerfomedMovie')">cerca</button>
           </nav>
         </div>
     </header>

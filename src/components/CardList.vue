@@ -18,7 +18,8 @@ export default{
  <section>
     <div class="container">
         <div class="wrapper-title">
-            <h1 v-if="store.MovieList.length > 0">FILM</h1>
+            <h1 v-if="store.searchText.length > 0">FILM</h1>
+            <h1 v-else>FILM POPOLARI</h1>
         </div>
         <div  class="wrapper-list">
         <Card  v-for="singleCard in store.MovieList" :key="singleCard.id" :MovieInfo="singleCard"  ></Card>
@@ -26,7 +27,8 @@ export default{
     </div>
     <div class="container">
         <div class="wrapper-title">
-          <h1 v-show="store.SerieTvList.length > 0">SERIE TV</h1>  
+          <h1 v-if="store.searchText.length > 0">SERIE TV</h1>
+          <h1 v-else>SERIE TV POPOLARI</h1>  
         </div>
         <div class="wrapper-list">
           <Card  v-for="singleCard in store.SerieTvList" :key="singleCard.id" :MovieInfo="singleCard"  ></Card>
