@@ -26,16 +26,12 @@ export default {
             let flag = this.MovieInfo.original_language + '.png';
             return new URL(`../assets/img/${flag}`, import.meta.url).href;
         },
-        fixNumber(number) {
-            if (number > 0) {
-                number = number / 2;
-            }
-            return number.toFixed();
-        },
         getStar() {
-
+           
+            return Math.ceil(this.MovieInfo.vote_average / 2);
         },
-    },
+       
+    }
 }
 </script>
 
@@ -48,6 +44,7 @@ export default {
         </div>
         <div class="image-poster null" v-else>
             <img  src="../assets/img/null.png" alt="">
+            <div>{{MovieInfo.title ? MovieInfo.title : MovieInfo.name}}</div>
         </div>
         <!-- title  -->
         <div class="wrapper-text">
@@ -64,9 +61,11 @@ export default {
             <!-- vote  -->
             <div class="vote">
                 <h4 class="p-b">Voto: </h4>
-                <span v-for="singleStar, index in 5">
-                    <i class="fa-solid fa-star " :class="{ 'active': index }"></i>
-                </span>
+                
+                    <i  v-for="n in getStar()" class="fa-solid fa-star active"></i>
+                    <i v-for="n in 5 - getStar()" class="fa-regular fa-star "></i>
+
+              
             </div>
             <!-- overview  -->
             <div class="wrapper-overview">
@@ -109,7 +108,19 @@ export default {
             width: 100%;
             height: 100%;
         }
-    }
+      }
+      .null {
+            height: 100%;
+        img {
+
+            object-fit: cover;
+            width: 100%;
+            height: 50%;
+            padding-bottom: 20px;
+        }
+      }
+
+
      }
       
 
@@ -124,7 +135,6 @@ export default {
             height: 20px;
         }
     }
-
 
 
     .vote {
